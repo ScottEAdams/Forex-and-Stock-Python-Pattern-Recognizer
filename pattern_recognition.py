@@ -3,11 +3,12 @@ import matplotlib.pyplot as plt
 from globals import *
 from percent_change import percent_change
 
-def pattern_recognition(samples: int, pattern_array: list, performance_array: list, pattern_for_recognition: list):
+def pattern_recognition(samples: int, pattern_array: list, performance_array: list, pattern_for_recognition: list, end_point: int):
     """
 
     :return:
     """
+    #print('Endpoint pat rec', end_point)
 
     # Identifiers whenever a similar pattern has been found or not
     found_pattern = False
@@ -103,7 +104,7 @@ def pattern_recognition(samples: int, pattern_array: list, performance_array: li
             plt.title("Pattern recognition")
             plt.suptitle("Patterns recognized after {} samples".format(samples))
             plt.savefig(pattern_images_folder + "patter_recognition_{}_samples.png".format(samples))
-
+            plt.close()
         print(prediction_array)
 
         prediction_average = np.average(prediction_array)
@@ -113,16 +114,22 @@ def pattern_recognition(samples: int, pattern_array: list, performance_array: li
             print("Drop predicted")
             print(pattern_for_recognition[29])
             print(real_movement)
+            print('Endpoint', end_point)
             if real_movement < pattern_for_recognition[29]:
                 accuracy_array.append(100)
+                profit_array.append(-real_movement)
             else:
                 accuracy_array.append(0)
+                profit_array.append(real_movement)
 
         if prediction_average > 0:
             print("Rise predicted ")
             print(pattern_for_recognition[29])
             print(real_movement)
+            print('Endpoint',end_point)
             if real_movement > pattern_for_recognition[29]:
                 accuracy_array.append(100)
+                profit_array.append(real_movement)
             else:
                 accuracy_array.append(0)
+                profit_array.append(-real_movement)
