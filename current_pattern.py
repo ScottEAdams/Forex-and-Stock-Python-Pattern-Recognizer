@@ -1,7 +1,7 @@
 from globals import *
 from percent_change import percent_change
 
-def current_pattern(average_line, pattern_for_recognition: list):
+def current_pattern(average_line, pattern_for_recognition: list, end_point: int):
     """
     Create a pattern that will be compared to in-memory patterns formed by the last dots_for_pattern entries of the data
     """
