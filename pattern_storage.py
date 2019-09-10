@@ -2,9 +2,11 @@ from globals import *
 from percent_change import percent_change
 
 
-def pattern_storage(average_line: list, pattern_array: list, performance_array: list):
+def pattern_storage(average_line: list, pattern_array: list, performance_array: list, end_point: int):
     # Get the length of the array
     x = len(average_line) - (30 + dots_for_pattern)
+
+    #print('Endpoint pat stor', end_point)
 
     y = 1 + dots_for_pattern
 
